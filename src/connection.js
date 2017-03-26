@@ -45,12 +45,10 @@ const Connection = function( options ) {
   //See https://github.com/luin/ioredis/wiki/Improve-Performance
 
   if( options.nodes instanceof Array ) {
-    options.redisOptions.dropBufferSupport = true
-    var nodes = options.nodes
+     var nodes = options.nodes
     delete options.nodes
     this.client = new Redis.Cluster( nodes, options )
   } else {
-    options.dropBufferSupport = true
     this.client = new Redis( options )
   }
 
